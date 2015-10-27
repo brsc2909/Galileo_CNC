@@ -30,7 +30,7 @@ int main()
     int baudrate = 9600;
     int dev_num = 50; // comm port to start search at
     char dev_name[MAX_PATH];
-    DCB dcbSerialParams = {0};  // aray for storing serial parameters
+    DCB dcbSerialParams = {0};  // array for storing serial parameters
     COMMTIMEOUTS timeouts = {0}; // array for storing timout information
 
      printf("Searching serial ports...\n");
