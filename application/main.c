@@ -24,9 +24,14 @@ int main()
     int baudrate = 19200;
     int dev_num = 50;
     char dev_name[MAX_PATH];
+<<<<<<< HEAD
     HANDLE hSerial;
     DCB dcbSerialParams = {0};
     COMMTIMEOUTS timeouts = {0};
+=======
+    DCB dcbSerialParams = {0};  // array for storing serial parameters
+    COMMTIMEOUTS timeouts = {0}; // array for storing timout information
+>>>>>>> origin/master
 
      printf("Searching serial ports...\n");
     while(dev_num >= 0)
