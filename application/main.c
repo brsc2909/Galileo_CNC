@@ -1,9 +1,13 @@
+/******************************************************************************************************
+ _                     _ _ _                  ___  ___   ___ _____  ___ ____  _  _    ___   ___
+| |__   ___  ___ _   _| | (_) ___  _ __      / _ \/ _ \ / _ \___ / / _ \___ \| || |  / _ \ / _ \
+| '_ \ / __|/ __| | | | | | |/ _ \| '_ \    / /_\/ | | | | | ||_ \| | | |__) | || |_| | | | | | |
+| |_) |\__ \ (__| |_| | | | | (_) | | | |  / /_\\| |_| | |_| |__) | |_| / __/|__   _| |_| | |_| |
+|_.__(_)___/\___|\__,_|_|_|_|\___/|_| |_|  \____/ \___/ \___/____/ \___/_____|  |_|  \___/ \___/ \
 
- /************************************************************************************************************
-application for controling galileo or arduino cnc machine
-by brendan scullion
-10/11/2014
-**********************************************************************************************************/
+programm: galileo cnc
+    main
+******************************************************************************************************/
 #include <string.h>
 #include <windows.h>
 #include <stdio.h>
@@ -14,24 +18,20 @@ by brendan scullion
 #include <conio.h>
 #include "functions.h"
 
+
+
 int main()
 {
+    heading();
+    screen = GetStdHandle(STD_OUTPUT_HANDLE);
     system("COLOR 1F");
 
     // Declare variables and structures
-    unsigned char text_to_send[MAX_PATH];
-    unsigned char digits[MAX_PATH];
-    int baudrate = 19200;
-    int dev_num = 50;
+    int baudrate = 9600;
+    int dev_num = 50; // comm port to start search at
     char dev_name[MAX_PATH];
-<<<<<<< HEAD
-    HANDLE hSerial;
-    DCB dcbSerialParams = {0};
-    COMMTIMEOUTS timeouts = {0};
-=======
-    DCB dcbSerialParams = {0};  // array for storing serial parameters
+    DCB dcbSerialParams = {0};  // aray for storing serial parameters
     COMMTIMEOUTS timeouts = {0}; // array for storing timout information
->>>>>>> origin/master
 
      printf("Searching serial ports...\n");
     while(dev_num >= 0)
@@ -40,8 +40,13 @@ int main()
         printf("\rTrying COM%d...", dev_num);
         sprintf(dev_name, "\\\\.\\COM%d", dev_num);
         hSerial = CreateFile(
-        dev_name, GENERIC_READ|GENERIC_WRITE, 0, NULL,
-        OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL );
+                        dev_name,
+                        GENERIC_READ|GENERIC_WRITE,
+                        0,
+                        NULL,
+                        OPEN_EXISTING,
+                        FILE_ATTRIBUTE_NORMAL,
+                        NULL );
         if (hSerial == INVALID_HANDLE_VALUE) dev_num--;
         else break;
     }
@@ -54,7 +59,7 @@ int main()
 
     printf("OK\n");
 
-    // Set device parameters (38400 baud, 1 start bit,
+    // Set device parameters (9600 baud, 1 start bit,
     // 1 stop bit, no parity)
     dcbSerialParams.DCBlength = sizeof(dcbSerialParams);
     if (GetCommState(hSerial, &dcbSerialParams) == 0)
@@ -88,61 +93,33 @@ int main()
     }
 
     char *cmd = NULL;
-    char *para1 = NULL;
-    char *para2 = NULL;
-    char *para3 = NULL;
-
-    char comPort[10];
-    float baudRate;
-    int keepGoing = 1;
     //*********************************************************************************************************************
 
     char cmdLine[200];
-    heading();
-    while(keepGoing == 1)
+    while(1)
     {
-        printf("->>");
+        printf(">>");
         gets(cmdLine);
         cmd = strtok(cmdLine, " ");
 
         if(cmd!=false)
         {
-            if(cmd != NULL)
-            {
-                para1 = strtok(NULL, " ");
-            }
-            else if(para1 != NULL)
-            {
-               para2 = strtok(NULL, " ");
-            }
-            else if(para2 != NULL)
-            {
-                para3 = strtok(NULL, " ");
-            }
-            else if(strcmp(cmd, "help")== 0)
+            if(strcmp(cmd, "help")== 0)
             {
                 help();
             }
-            if(strcmp(cmd, "comset")== 0)
-            {
-                setupComs(comPort, baudRate);
-            }
             else if(strcmp(cmd, "getg")== 0)
             {
-                getgcode(hSerial,text_to_send,dev_name);
-            }
-            else if(strcmp(cmd, "offset")==0)
-            {
-                getOffset(hSerial, text_to_send, dev_name);
+                GetGcode(dev_name);
             }
             else if(strcmp(cmd, "setup") == 0)
             {
-                setup(hSerial, text_to_send, dev_name);
+                setup(dev_name);
             }
 
             else if(strcmp(cmd, "exit") == 0)
             {
-                keepGoing = 0;
+                break;
             }
             else
             {
