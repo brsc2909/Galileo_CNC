@@ -37,7 +37,7 @@ int main()
     while(dev_num >= 0)
     {
         printf("\r                        ");
-        printf("\rTrying COM%d...", dev_num);
+        printf("\rTrying on COM%d...", dev_num);
         sprintf(dev_name, "\\\\.\\COM%d", dev_num);
         hSerial = CreateFile(
                         dev_name,
