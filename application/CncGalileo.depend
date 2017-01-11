@@ -1,0 +1,98 @@
+# depslib dependency file v1.0
+1430082663 source:c:\users\public\documents\cnc\application\cncgalileo\main.c
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<ctype.h>
+	<conio.h>
+	"functions.h"
+
+1429549995 source:c:\users\public\documents\cnc\application\cncgalileo\functions.c
+	"functions.h"
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<ctype.h>
+	<conio.h>
+
+1430082663 c:\users\public\documents\cnc\application\cncgalileo\functions.h
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<ctype.h>
+	<conio.h>
+
+1430095246 source:c:\users\public\documents\cnc\application\cncgalileo\functions_major.c
+	"functions.h"
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<ctype.h>
+	<conio.h>
+
+1430095246 source:c:\users\public\documents\cnc\application\cncgalileo\functions_minor.c
+	"functions.h"
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<ctype.h>
+	<conio.h>
+
+1430091646 source:d:\college\cnc\application\cncgalileo\functions_major.c
+	"functions.h"
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<ctype.h>
+	<conio.h>
+
+1430079063 d:\college\cnc\application\cncgalileo\functions.h
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<ctype.h>
+	<conio.h>
+
+1430091646 source:d:\college\cnc\application\cncgalileo\functions_minor.c
+	"functions.h"
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<ctype.h>
+	<conio.h>
+
+1430079063 source:d:\college\cnc\application\cncgalileo\main.c
+	<string.h>
+	<windows.h>
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	<ctype.h>
+	<conio.h>
+	"functions.h"
+
